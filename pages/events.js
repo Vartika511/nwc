@@ -91,7 +91,7 @@ export default function Events() {
          
          
          */}
-        <section className="bg-no-repeat bg-cover bg-[url('/homepae.png')] events-main-pg h-screen flex flex-col md:justify-evenly lg:flex-row lg:justify-evenly lg:items-center">
+        <section className="bg-no-repeat bg-cover bg-[url('/homepae.png')] events-main-pg h-fit xs:h-screen flex flex-col justify-center md:justify-evenly lg:flex-row lg:justify-evenly lg:items-center">
           <div className="left mb-40  text-center">
             <div className="justify-center flex items-center mb-10">
               <h1
@@ -127,13 +127,13 @@ export default function Events() {
               Events done so far
             </motion.h4>
           </div>
-          <div className="hidden seperator h-[34rem] w-1.5 rounded-xl bg-light-b lg:block"></div>
+
           <motion.div
-            className="right text-white text-center"
+            className="right  text-white text-center"
             variants={upcomingVarient}
-            viewport={{ once: true, amount: 1 }}
             initial="initial"
             whileInView={"animate"}
+            viewport={{ once: true, amount: 1 }}
           >
             <motion.h3
               className=" font-bold mb-10 text-4xl mt-0 md:text-6xl"
@@ -201,6 +201,14 @@ export default function Events() {
                     : Mrs. Osa Mokherji Systems Engineer TCS, Mr. Kailash
                     Chandak Principal Engineer Coinswitch
                   </h3>
+                </div>
+                <div className="event-image mx-auto w-fit lg:hidden lg:py-32 lg:ml-4">
+                  <Image
+                    alt="event11"
+                    src="/event11.PNG"
+                    width="904"
+                    height="508"
+                  />
                 </div>
 
                 <p className=" font-extrabold text-xl ">

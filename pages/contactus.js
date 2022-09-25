@@ -5,7 +5,7 @@ import Header from "../components/header";
 
 export default function ContactUs() {
   return (
-    <div className="main-gradient flex flex-col justify-around h-full w-max xs:w-full md:h-screen lg:h-fit sm:w-screen   pt-2 text-white ">
+    <div className="bg-no-repeat bg-cover bg-[url('/homepae.png')] flex flex-col justify-around h-full w-max xs:w-full md:h-screen lg:h-fit sm:w-screen    text-white ">
       <Head>
         <title>Contact Us/NWC</title>
         <meta name="description" content="Contact us " />

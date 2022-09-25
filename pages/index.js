@@ -85,11 +85,11 @@ export default function Home() {
             <Image alt="homegif" src="/home.png" width={720} height={720} />
           </motion.div>
           <motion.div
-            className="justify-start ml=0px "
+            className="flex justify-center  lg:justify-start  w-full "
             variants={heroDescContainerChildComponents}
           >
             <Link href="/notice">
-              <button className="bg-[#010D51] font-bold mx-auto  text-xl mt-1 rounded-3xl w-44 h-12">
+              <button className="bg-[#010D51] border-4 border-black font-bold mx-auto  text-xl mt-1 rounded-3xl w-44 h-12">
                 Join Now!
               </button>
             </Link>
@@ -121,21 +121,25 @@ export default function Home() {
               knowmore={"Know more"}
             />
           </div>
-          <div className="flex w-full justify-around flex-wrap items-center">
-            <MemberCard
-              src={"/arvindg.png"}
-              name={"Mr. Aravind G"}
-              designation={"Vice-President"}
-              desc={"CSE 4th year SRM IST"}
-              knowmore={"Know more"}
-            />
-            <MemberCard
-              src={"/amrit.png"}
-              name={"Mr. Armit Anand"}
-              designation={"Joint-Secretary"}
-              desc={"CSE 3rd year SRM IST"}
-              knowmore={"Know more"}
-            />
+          <div className="flex w-full justify-around flex-wrap items-center ">
+            <div className="my-10 ">
+              <MemberCard
+                src={"/arvindg.png"}
+                name={"Mr. Aravind G"}
+                designation={"Vice-President"}
+                desc={"CSE 4th year SRM IST"}
+                knowmore={"Know more"}
+              />
+            </div>
+            <div className="lg:my-10">
+              <MemberCard
+                src={"/amrit.png"}
+                name={"Mr. Armit Anand"}
+                designation={"Joint-Secretary"}
+                desc={"CSE 3rd year SRM IST"}
+                knowmore={"Know more"}
+              />
+            </div>
           </div>
         </div>
       </div>
