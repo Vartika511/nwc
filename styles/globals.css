@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+@layer components{
+    .main-gradient{
+        background-image: linear-gradient(to top, #00308f, #003e9a, #004ca4, #005aad, #0067b5, #0073bb, #007fc1, #008ac5, #0096c7, #00a2c4, #00acbe, #00b6b6);
+    }
+}
+
