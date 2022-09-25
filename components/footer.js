@@ -29,12 +29,15 @@ export default function Footer() {
             <h1>Follow us</h1>
             <div className="flex justify-evenly">
 
-            <Image src="/facebook.png" height="32" width="32" />
-            <Image src="/instagram.png" height="32" width="32" />
+            <Image alt="facebook" src="/facebook.png" height="32" width="32" />
+            <Image alt="instagram" src="/instagram.png" height="32" width="32" />
             </div>
         </div>
-        <div className="text-xl">
-            <Image src="/footer.png" width="156" height = "188" />
+        <div className=" flex items-end text-xl">
+            <div >
+            <Image alt="footer" src="/footer.png" width="156" height = "190" />
+            </div>
+            
         </div>
      
         </div>
