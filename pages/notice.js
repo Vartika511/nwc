@@ -5,7 +5,7 @@ import Header from "../components/header";
 
 export default function Notice() {
   return (
-    <div className="bg-no-repeat bg-cover bg-[url('/homepae.png')]  h-max xs:h-full lg:h-screen w-fit  lg:w-full ">
+    <div className=" bg-no-repeat bg-cover bg-[url('/homepae.png')]  h-max xs:h-full lg:h-screen w-fit  lg:w-full ">
       <Head>
         <title>Notice Board/NWC</title>
         <meta
@@ -15,9 +15,9 @@ export default function Notice() {
         <link rel="icon" href="/nwc.png" />
       </Head>
       <Header />
-      <div className="flex p-3  h-max xs:h-screen lg:h-screen md:py-10 lg:py-0 lg:mt-2 lg:px-36  ">
+      <div className="flex p-3  h-max xs:h-screen lg:h-screen md:py-10 lg:py-0 lg:mt-20 lg:px-36  ">
         <div className="bg-[#D9D9D9] h-max w-screen border-4 border-black rounded-xl p-7 md:h-fit md:my-44 lg:my-0  ">
-          <h1 className="text-4xl text-center">Notice Board</h1>
+          <h1 className="font-bold text-4xl text-center">N<span className="text-red-500">O</span>TI<span className="text-red-500">C</span>E  BO<span className="text-red-500">A</span>RD</h1>
           <div>
             <h4 className="mb-4">NWC Association SRMIST 22-23 Recruitments</h4>
             <h4>Our Vision:</h4>
