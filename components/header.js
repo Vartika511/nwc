@@ -7,7 +7,7 @@ export default function Header() {
   return (
     <div className="font-bold bg-no-repeat bg-cover bg-[url('/navbar2.png')] navbar flex justify-between lg:justify-evenly lg:items-center">
       <div className="logo pt-5 pb-1">
-        <Image src="/nwc.png" width={95} height={90} />
+        <Image alt="nwc" src="/nwc.png" width={95} height={90} />
       </div>
       {/* showing hamburger menu for mobiles and tabets */}
       <div className="hamburger  mr-5 flex items-center lg:hidden">
@@ -94,3 +94,4 @@ export default function Header() {
     </div>
   );
 }
+
