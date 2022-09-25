@@ -6,7 +6,7 @@ export default function MemberCard(props) {
   return (
     <div className="h-75 w-80 m-7 rounded-xl flex flex-col justify-center items-center text-black bg-white border-2 border-black hover:bg-[#010D51] hover:text-white hover:border-white ">
        <div className="-mt-20 rounded-xl">
-            <Image  className="rounded-xl " src={src}  width="250" height="250" />
+            <Image alt="images" className="rounded-xl " src={src}  width="250" height="250" />
        </div>
        <div className="flex flex-col justify-center Description">
         <h1>{name}</h1>
