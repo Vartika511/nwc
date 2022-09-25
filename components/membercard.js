@@ -48,7 +48,7 @@ export default function MemberCard(props) {
       viewport={{ once: true, amount: 1 }}
       transition={{
         when: "beforeChildren",
-        staggerChildren: 0.7,
+        staggerChildren: 0.6,
       }}
     >
       <motion.div
