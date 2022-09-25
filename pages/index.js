@@ -4,6 +4,39 @@ import Link from "next/link";
 import Footer from "../components/footer";
 import Header from "../components/header";
 import MemberCard from "../components/membercard";
+import { animate, motion } from "framer-motion";
+
+const heroImageVarient = {
+  initial: {
+    x: "-100vw",
+    opacity: 0,
+  },
+  animate: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      ease: "anticipate",
+      delay: 2,
+      type: "spring",
+      stiffness: 120,
+      duration: 2,
+    },
+  },
+};
+const heroDescContainerChildComponents = {
+  initial: {
+    y: -100,
+    opacity: 0,
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      ease: "anticipate",
+      duration: 1,
+    },
+  },
+};
 
 export default function Home() {
   return (
@@ -13,31 +46,71 @@ export default function Home() {
         <meta name="description" content="NWC department " />
         <link rel="icon" href="/nwc.png" />
       </Head>
-       <Header /> 
+      <Header />
       <div className="  flex py-2 px-36 h-fit xl:py-24 ">
-        <div className="hidden lg:block">
+        <motion.div
+          className="hero-image hidden lg:block"
+          variants={heroImageVarient}
+          initial="initial"
+          animate="animate"
+        >
           <Image alt="homegif" src="/home.png" width={1024} height={1024} />
-        </div>
-        <div className="py-40 lg:py-24 flex flex-col w-screen  items-start">
-          <h1 className="font-extrabold text-7xl mb-5">NWC ASSOCIATION SRM KTR</h1>
-          <h5 className="font-extrabold text-xl  lg:mb-5">
+        </motion.div>
+        <motion.div
+          className="hero-desc-container py-40 lg:py-24 flex flex-col w-screen  items-start"
+          initial="initial"
+          animate="animate"
+          transition={{
+            staggerChildren: 0.7,
+          }}
+        >
+          <motion.h1
+            className="font-extrabold text-7xl mb-5"
+            variants={heroDescContainerChildComponents}
+          >
+            NWC ASSOCIATION SRM KTR
+          </motion.h1>
+          <motion.h5
+            className="font-extrabold text-xl  lg:mb-5"
+            variants={heroDescContainerChildComponents}
+          >
             The official student association of the Department of NWC, SRM IST
             KTR.
-          </h5>
-          
-          <div className=" lg:mt-10 mx-auto lg:hidden">
-            <Image alt="homegif" src="/home.png" width={720} height={720} />
-          </div>
-          <div className="justify-start ml=0px ">
-            <Link href="/notice">
-           <button className="bg-[#010D51] font-bold mx-auto  text-xl mt-1 rounded-3xl w-44 h-12">Join Now!</button>
-            </Link>
+          </motion.h5>
 
-          </div>
-        </div>
+          <motion.div
+            className=" lg:mt-10 mx-auto lg:hidden"
+            variants={heroDescContainerChildComponents}
+          >
+            <Image alt="homegif" src="/home.png" width={720} height={720} />
+          </motion.div>
+          <motion.div
+            className="justify-start ml=0px "
+            variants={heroDescContainerChildComponents}
+          >
+            <Link href="/notice">
+              <button className="bg-[#010D51] font-bold mx-auto  text-xl mt-1 rounded-3xl w-44 h-12">
+                Join Now!
+              </button>
+            </Link>
+          </motion.div>
+        </motion.div>
       </div>
       <div className=" bg-no-repeat bg-cover bg-[url('/homepae.png')] board-members lg:border-b h-fit w-full ">
-        <h1 className="font-bold mb-20 text-center text-7xl">Board Members</h1>
+        <motion.h1
+          className="font-bold mb-20 text-center text-7xl"
+          initial={{
+            opacity: 0,
+          }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 1 }}
+          transition={{
+            ease: "anticipate",
+            duration: 1,
+          }}
+        >
+          Board Members
+        </motion.h1>
         <div className="flex flex-col justify-around items-center">
           <div className="md:mb-0 flex justify-center  flex-wrap">
             <MemberCard
@@ -66,7 +139,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
