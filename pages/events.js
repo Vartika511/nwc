@@ -54,7 +54,21 @@ const upcomingChildVarient = {
   },
 };
 
-export default function Events() {
+    // getting upcoming events data from upcoming api
+   
+export async function getServerSideProps(context) {
+    const response = await fetch("http://localhost:3000/api/events");
+    const data = await response.json();
+  return {
+    props: {
+      upcomingevents:data
+    }, // will be passed to the page component as props
+  }
+}
+
+
+
+export default function Events({upcomingevents}) {
   let counter = useRef(null);
   let plus = useRef(null);
 
@@ -62,9 +76,10 @@ export default function Events() {
     value: 0,
   };
 
-  const [upcomingevents, setUpcomingEvents] = useState([]);
+
 
   useEffect(() => {
+
     //animating counter using gsap
       if(counter === null) return;
       gsap.to(count, {
@@ -81,18 +96,8 @@ export default function Events() {
       );
     
 
-    // getting upcoming events data from upcoming api
-    async function getNoticeData() {
-      try {
-        const response = await fetch("http://localhost:3000/api/events");
-        const data = await response.json();
 
-        setUpcomingEvents(data);
-      } catch (error) {
-        console.log("Error in fetching skills from api . Error msg :", error);
-      }
-    }
-    getNoticeData();
+   
   }, []);
 
   if (upcomingevents.length == 0) {

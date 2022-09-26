@@ -4,27 +4,22 @@ import Header from "../components/header";
 import { useEffect, useState } from "react";
 
 
-
-export default function Register() {
-
-  const [notice,setNotice] = useState([]);
 // getting the registeration notice from register api
-  useEffect(() => {
-    async function getNoticeData(){
-      try{
-        const response = await fetch("http://localhost:3000/api/register");
-        const data = await response.json();
-  
-        setNotice(data);
-      }catch(error){
-        console.log("Error in fetching skills from api . Error msg :",error);
-      }
-         
-    }
-    getNoticeData();
-   
-    
-  }, [])
+
+export async function getServerSideProps(context) {
+  const response = await fetch("http://localhost:3000/api/register");
+  const data = await response.json();
+return {
+  props: {
+    notice:data
+  }, // will be passed to the page component as props
+}
+}
+
+export default function Register({notice}) {
+
+  console.log(notice)
+
 
   if(notice.length == 0){
     return(

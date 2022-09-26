@@ -27,16 +27,19 @@ export default function ContactUs() {
       );
   };
   return (
-    <div className="bg-no-repeat bg-cover bg-[url('/homepae.png')] flex flex-col justify-around h-full w-max xs:w-full md:h-screen lg:h-fit sm:w-screen    text-white ">
+    <div className="bg-no-repeat bg-cover bg-[url('/homepae.png')] flex flex-col justify-around border-8 border-black h-full w-max xs:w-full md:h-screen lg:h-fit sm:w-screen    text-white ">
       <Head>
-        <title >Contact Us/NWC</title>
+        <title>Contact Us/NWC</title>
         <meta name="description" content="Contact us " />
         <link rel="icon" href="/nwc.png" />
       </Head>
       <Header />
       <div className="mb-30 h-full my-5 w-fit  mx-auto">
-      <div>
-        <h1 className="flex justify-center font-extrabold text-xl sm:text-7xl lg:text-5xl mb-10">  Contact Us</h1>
+        <div>
+          <h1 className="flex justify-center font-extrabold text-xl sm:text-7xl lg:text-5xl mb-10">
+            {" "}
+            Contact Us
+          </h1>
         </div>
         <div className="form ml-5  h-fit flex flex-col lg:flex-row lg:justify-center">
           <div className="border-y-4 border-l-4 border-black  rounded-3xl rounded-r-none  form-left bg-[#1B2A76]">
@@ -47,7 +50,12 @@ export default function ContactUs() {
               Fill this form and our team will get back to you within 24 hours
             </p>
             <div className="ml-10 flex mb-5">
-              <Image alt="phone" src="/PhoneOutline.png" height="32" width="32" />
+              <Image
+                alt="phone"
+                src="/PhoneOutline.png"
+                height="32"
+                width="32"
+              />
               <p className="ml-4">+23456-54876</p>
             </div>
             <div className="ml-10 flex ">

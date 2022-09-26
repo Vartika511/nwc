@@ -3,28 +3,21 @@ import Link from "next/link";
 import Footer from "../components/footer";
 import Header from "../components/header";
 import { useEffect, useState } from "react";
-
-
-
-export default function Notice() {
-  const [notice,setNotice] = useState([]);
 // getting the joining notice from notice api
-useEffect(() => {
-  async function getNoticeData(){
-    try{
-      const response = await fetch("http://localhost:3000/api/notice");
-      const data = await response.json();
+export async function getServerSideProps(context) {
+  const response = await fetch("http://localhost:3000/api/notice");
+  const data = await response.json();
+return {
+  props: {
+    notice:data
+  }, // will be passed to the page component as props
+}
+}
 
-      setNotice(data);
-    }catch(error){
-      console.log("Error in fetching skills from api . Error msg :",error);
-    }
-       
-  }
-  getNoticeData();
- 
-  
-}, [])
+export default function Notice({notice}) {
+
+console.log(notice)
+
 
 if(notice.length == 0){
   return(
