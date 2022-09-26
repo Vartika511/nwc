@@ -155,7 +155,7 @@ export default function Events() {
               Events done so far
             </motion.h4>
           </div>
-
+          <div className="hidden seperator h-[34rem] w-1.5 rounded-xl border-4 border-[#010D51] bg-light-blue  lg:block"></div>
           <motion.div
             className="right  text-white text-center"
             variants={upcomingVarient}
