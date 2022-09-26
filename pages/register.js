@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 // getting the registeration notice from register api
 
 export async function getServerSideProps(context) {
-  const response = await fetch("http://localhost:3000/api/register");
+  const response = await fetch("http://nwc-dil-maange-more.vercel.app/api/register");
   const data = await response.json();
 return {
   props: {

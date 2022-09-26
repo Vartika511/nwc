@@ -57,7 +57,7 @@ const upcomingChildVarient = {
     // getting upcoming events data from upcoming api
    
 export async function getServerSideProps(context) {
-    const response = await fetch("http://localhost:3000/api/events");
+    const response = await fetch("http://nwc-dil-maange-more.vercel.app/api/events");
     const data = await response.json();
   return {
     props: {

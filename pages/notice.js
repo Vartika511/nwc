@@ -5,7 +5,7 @@ import Header from "../components/header";
 import { useEffect, useState } from "react";
 // getting the joining notice from notice api
 export async function getServerSideProps(context) {
-  const response = await fetch("http://localhost:3000/api/notice");
+  const response = await fetch("http://nwc-dil-maange-more.vercel.app/api/notice");
   const data = await response.json();
 return {
   props: {
