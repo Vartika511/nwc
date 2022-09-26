@@ -2,8 +2,40 @@ import Head from "next/head";
 import Link from "next/link";
 import Footer from "../components/footer";
 import Header from "../components/header";
+import { useEffect, useState } from "react";
+
+
 
 export default function Notice() {
+  const [notice,setNotice] = useState([]);
+// getting the joining notice from notice api
+useEffect(() => {
+  async function getNoticeData(){
+    try{
+      const response = await fetch("http://localhost:3000/api/notice");
+      const data = await response.json();
+
+      setNotice(data);
+    }catch(error){
+      console.log("Error in fetching skills from api . Error msg :",error);
+    }
+       
+  }
+  getNoticeData();
+ 
+  
+}, [])
+
+if(notice.length == 0){
+  return(
+
+    <div className="bg-no-repeat bg-cover bg-[url('/homepae.png')] text-white h-full w-fit lg:w-full pt-0">
+     
+    </div>
+  );
+}
+
+
   return (
     <div className="bg-no-repeat bg-cover bg-[url('/homepae.png')]  h-max xs:h-full lg:h-screen w-fit  lg:w-full ">
       <Head>
@@ -19,37 +51,27 @@ export default function Notice() {
         <div className="bg-[#D9D9D9] h-max w-screen border-4 border-black rounded-xl p-7 md:h-fit md:my-44 lg:my-0  ">
           <h1 className="text-4xl text-center">Notice Board</h1>
           <div>
-            <h4 className="mb-4">NWC Association SRMIST 22-23 Recruitments</h4>
-            <h4>Our Vision:</h4>
+            <h4 className="mb-4">{notice.data.heading}</h4>
+            <h4>{notice.data.beforePara}</h4>
             <p className="mb-5">
-              NWC aims to develop virtuous students with a diverse approach that
-              would showcase their holistic development. The department&apos;s
-              research focuses on developing new and creative ideas that
-              manifest students’ zeal to achieve higher in life. Using technical
-              methodologies, the organization concentrates on providing insights
-              into the future scope of development or improving the pre-existing
-              ones.
+            {notice.data.para}
             </p>
-            <h4>We’re currently recruiting for the following domains :</h4>
+            <h4>{notice.data.afterPara}</h4>
             <ul className="list-disc mb-5">
-              <li>Technical</li>
-              <li>Non-Technical</li>
-              <li>Publicity and Marketing</li>
-              <li>Finance and Sponsorship</li>
-              <li>Design and Media</li>
-              <li>Creative</li>
+            {  notice.data.domains.map((domain)=>{return <li key={domain.domain}>{domain.domain}</li>
+        })} 
+             
             </ul>
             <p>
-              Students from 1st -2nd years are eligible to apply for the same.
+            {notice.data.eligibility}
             </p>
-            <Link href="https://forms.gle/eoLh9RxXPfRt7xM46">
+            <Link href={notice.data.registerSrc}>
               <button className="bg-blue-800 rounded-2xl text-white drop-shadow-xl mb-5 w-44">
                 Click here to register
               </button>
             </Link>
             <p>
-              <span className="block">Regards,</span>Networking and
-              Communications Association
+            {notice.data.regards}
             </p>
           </div>
         </div>

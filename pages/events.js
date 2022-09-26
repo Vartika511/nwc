@@ -4,7 +4,7 @@ import Link from "next/link";
 import Footer from "../components/footer";
 import Header from "../components/header";
 import { gsap } from "gsap";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { animate, motion } from "framer-motion";
 
 const upcomingVarient = {
@@ -55,24 +55,52 @@ const upcomingChildVarient = {
 };
 
 export default function Events() {
-  let counter = useRef();
-  let plus = useRef();
+  let counter = useRef(null);
+  let plus = useRef(null);
 
   let count = {
     value: 0,
   };
+
+  const [upcomingevents, setUpcomingEvents] = useState([]);
+
   useEffect(() => {
-    gsap.to(count, {
-      value: 65,
-      duration: 1,
-      onUpdate: () => (counter.current.innerText = Math.round(count.value)),
-    });
-    gsap.fromTo(
-      plus.current,
-      { opacity: 0, x: -100 },
-      { opacity: 1, duration: 1.5, ease: "power2.out", x: 0 }
-    );
+    //animating counter using gsap
+      if(counter === null) return;
+      gsap.to(count, {
+        value: 65,
+        duration: 1,
+        onUpdate: () => (counter.current.innerText = Math.round(count.value)),
+      });
+      if(plus === null) return;
+   
+      gsap.fromTo(
+        plus.current,
+        { opacity: 0, x: -100 },
+        { opacity: 1, duration: 1.5, ease: "power2.out", x: 0 }
+      );
+    
+
+    // getting upcoming events data from upcoming api
+    async function getNoticeData() {
+      try {
+        const response = await fetch("http://localhost:3000/api/events");
+        const data = await response.json();
+
+        setUpcomingEvents(data);
+      } catch (error) {
+        console.log("Error in fetching skills from api . Error msg :", error);
+      }
+    }
+    getNoticeData();
   }, []);
+
+  if (upcomingevents.length == 0) {
+    return (
+      <div className="bg-no-repeat bg-cover bg-[url('/homepae.png')] text-white h-full w-fit lg:w-full pt-0"></div>
+    );
+  }
+
   return (
     <div className="bg-no-repeat bg-cover bg-[url('/homepae.png')] flex flex-col justify-around h-fit w-fit  text-white ">
       <Head>
@@ -147,7 +175,7 @@ export default function Events() {
             >
               <Image
                 alt="upcoming"
-                src="/upcoming.png"
+                src={upcomingevents.data.upcomingEventPic}
                 width="500"
                 height="300"
               />
@@ -158,7 +186,7 @@ export default function Events() {
             >
               <Image
                 alt="upcoming"
-                src="/upcoming.png"
+                src={upcomingevents.data.upcomingEventPic}
                 width="800"
                 height="450"
               />
