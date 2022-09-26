@@ -16,7 +16,6 @@ return {
 
 export default function Notice({notice}) {
 
-console.log(notice)
 
 
 if(notice.length == 0){

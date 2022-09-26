@@ -18,7 +18,7 @@ return {
 
 export default function Register({notice}) {
 
-  console.log(notice)
+
 
 
   if(notice.length == 0){
